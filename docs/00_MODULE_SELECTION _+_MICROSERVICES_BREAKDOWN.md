@@ -2,20 +2,13 @@
 
 ```mermaid
 graph TD;
-    NGINX["`NGINX
+    NGINX["`**NGINX**
     (API Gateway)`"]-->Auth-->A[("Database")];
     NGINX-->User-->B[("Database")];
    	NGINX-->Game-->C[(Database)];
    	NGINX-->Chat--> D[(Database)];
     NGINX-->Frontend-->E("Static files / SSR");
 ```
-
-```mermaid
-pie title Pets adopted by volunteers
-    "Dogs" : 386
-    "Cats" : 85
-    "Rats" : 15
----
 
 # Microservices Breakdown
 
