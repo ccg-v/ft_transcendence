@@ -5,8 +5,8 @@ graph TD;
     NGINX["`NGINX
     (API Gateway)`"]-->Auth-->A("DB");
     NGINX-->User-->B("DB");
-   	NGINX-->Game-->C("DB");
-   	NGINX-->Chat--> id1[(Database)];
+   	NGINX-->Game-->C[(DB)];
+   	NGINX-->Chat--> D[(Database)];
     NGINX-->Frontend-->E("Static files / SSR");
 ```
 ---
