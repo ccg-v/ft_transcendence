@@ -3,9 +3,9 @@
 ```mermaid
 graph TD;
     NGINX["`NGINX
-    (API Gateway)`"]-->Auth-->A("DB");
-    NGINX-->User-->B("DB");
-   	NGINX-->Game-->C[(DB)];
+    (API Gateway)`"]-->Auth-->A[("Database")];
+    NGINX-->User-->B[("Database")];
+   	NGINX-->Game-->C[(Database)];
    	NGINX-->Chat--> D[(Database)];
     NGINX-->Frontend-->E("Static files / SSR");
 ```
