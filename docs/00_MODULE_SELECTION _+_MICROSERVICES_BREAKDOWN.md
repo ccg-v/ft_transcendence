@@ -19,8 +19,8 @@ Here is a simple flow chart:
 
 ```mermaid
 graph TD;
-    NGINX-->Auth;
-    NGINX-->User;
-   	NGINX-->Game;
-    NGINX-->Frontend;
+    NGINX-->Auth-->DB;
+    NGINX-->User-->DB;
+   	NGINX-->Game-->DB;
+    NGINX-->Frontend-->Static files / SSR;
 ```
