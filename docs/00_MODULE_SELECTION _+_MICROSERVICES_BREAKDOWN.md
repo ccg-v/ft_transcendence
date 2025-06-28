@@ -2,10 +2,11 @@
 
 ```mermaid
 graph TD;
-    NGINX-->Auth-->A("DB");
+    NGINX["`NGINX
+    (API Gateway)`"]-->Auth-->A("DB");
     NGINX-->User-->B("DB");
    	NGINX-->Game-->C("DB");
-   	NGINX-->Chat-->C("DB");	
+   	NGINX-->Chat-->D("DB");	
     NGINX-->Frontend-->D("Static files / SSR");
 ```
 
