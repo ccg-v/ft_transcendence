@@ -141,7 +141,7 @@ Tech:
 - Display user stats, chat messages, and Pong game
 
 [^1]: CRUD stands for:
-  - Create – Add new data
+   - Create – Add new data
   - Read – Retrieve data
   - Update – Modify existing data
   - Delete – Remove data
