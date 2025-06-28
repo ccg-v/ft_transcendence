@@ -138,7 +138,7 @@ Tech:
 
 - OAuth login flow (Google pop-up)
 
-- Display user stats, chat messages, and Pong game
+- Display user stats, chat messages, and Pong game[^2].
 
 [^1]: CRUD stands for
   Create – Add new data
@@ -146,3 +146,6 @@ Tech:
   Update – Modify existing data
   Delete – Remove data
   It's the basic set of operations for managing data in a database or through an API.
+
+[^2]: To add line breaks within a footnote, prefix new lines with 2 spaces.
+  This is a second line.
