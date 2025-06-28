@@ -4,10 +4,10 @@
 graph TD;
     NGINX["`**NGINX**
     (_API Gateway_)`"]-->Auth-->A[("database")];
-    NGINX-->["`User`"]-->B[("database")];
-   	NGINX-->Game-->C[(database)];
-   	NGINX-->Chat--> D[(database)];
-    NGINX-->Frontend-->E("static files / SSR");
+    NGINX-->USER["`User`"]-->B[("database")];
+   	NGINX-->GAME["`Game`"]-->C[(database)];
+   	NGINX-->CHAT["`Chat`"]--> D[(database)];
+    NGINX-->FRONT["`Frontend`"]-->E("static files / SSR");
 ```
 
 # Microservices Breakdown
