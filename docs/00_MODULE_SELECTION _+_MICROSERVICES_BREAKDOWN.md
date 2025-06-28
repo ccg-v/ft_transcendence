@@ -22,5 +22,5 @@ graph TD;
     NGINX-->Auth-->DB;
     NGINX-->User-->DB;
    	NGINX-->Game-->DB;
-    NGINX-->Frontend-->Static files / SSR;
+    NGINX-->Frontend-->A("Static files / SSR");
 ```
