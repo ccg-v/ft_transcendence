@@ -3,11 +3,11 @@
 ```mermaid
 graph TD;
     NGINX["`**NGINX**
-    (API Gateway)`"]-->Auth-->A[("Database")];
-    NGINX-->User-->B[("Database")];
-   	NGINX-->Game-->C[(Database)];
-   	NGINX-->Chat--> D[(Database)];
-    NGINX-->Frontend-->E("Static files / SSR");
+    (_API Gateway_)`"]-->Auth-->A[("database")];
+    NGINX-->["`User`"]-->B[("database")];
+   	NGINX-->Game-->C[(database)];
+   	NGINX-->Chat--> D[(database)];
+    NGINX-->Frontend-->E("static files / SSR");
 ```
 
 # Microservices Breakdown
