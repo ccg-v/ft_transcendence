@@ -6,10 +6,9 @@ graph TD;
     (API Gateway)`"]-->Auth-->A("DB");
     NGINX-->User-->B("DB");
    	NGINX-->Game-->C("DB");
-   	NGINX-->Chat-->D("DB");	
-    NGINX-->Frontend-->D("Static files / SSR");
+   	NGINX-->Chat--> id1[(Database)];
+    NGINX-->Frontend-->E("Static files / SSR");
 ```
-
 ---
 
 # Microservices Breakdown
