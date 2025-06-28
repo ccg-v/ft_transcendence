@@ -28,7 +28,7 @@ All the backend services in ft_transcendence can (and probably will) use Node.js
 
 Service	     | Primary protocol	       | Why
 ------------ | ----------------------- | ---------------------------------------------------------------
-Auth	     | HTTP/REST (via Fastify) | Traditional CRUD: login, register, tokens, etc.
+Auth	     | HTTP/REST (via Fastify) | Traditional CRUD[^1]: login, register, tokens, etc.
 User Profile | HTTP/REST	           | Simple data endpoints (e.g., GET /user/:id)
 Chat	     | WebSockets (WS)	       | Real-time communication: new messages, typing, channel presence
 Game	     | WebSockets (WS)	       | Real-time game state: paddle positions, ball movement, etc.
@@ -56,3 +56,10 @@ Move player paddle	   | ❌ not real-time	    | ✅ 60fps updates
 - The _Chat_ and _Game_ services expose WebSocket servers (still in Node.js, possibly using libraries like ws, socket.io, or Fastify’s WS plugin).
 
 **But all of them are still built with Node.js — they just expose different types of endpoints.**
+
+[^1]: CRUD stands for:
+  - Create – Add new data
+  - Read – Retrieve data
+  - Update – Modify existing data
+  - Delete – Remove data
+  It's the basic set of operations for managing data in a database or through an API.

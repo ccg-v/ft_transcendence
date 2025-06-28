@@ -25,43 +25,57 @@ Just to be crystal clear:
 - There is no separate "Backend Service" in microservices.
 - The "backend" becomes a network of services, each doing one part of the backend job.
 
+
 # Good candidates for microservices in _ft_transcendence_
 
 ## 1. Auth Service
 
-	Handles login, signup, JWT token generation, OAuth (42 API), 2FA, etc.
-	- Why: Auth logic is distinct and often changes independently.
-	- Pros:
-		+ Clear interface (/login, /register, /refresh)
-		+ Reusable across apps (e.g., admin panel, mobile app)
-	- Bonus: You can secure all other services behind token validation.
+Handles login, signup, JWT token generation, OAuth (42 API), 2FA, etc.
+- **Why**: Auth logic is distinct and often changes independently.
+- **Pros**:
+	+ Clear interface (/login, /register, /refresh)
+	+ Reusable across apps (e.g., admin panel, mobile app)
+- Bonus: You can secure all other services behind token validation.
 
 ## 2. Game Service 
 
-	Manages pong game sessions, scores, WebSockets, and real-time updates.
-	- Why: Game logic is computationally and conceptually distinct.
-	- Pros:
-		+ Easier to scale independently (real-time = resource-intensive)
-		+ Can be developed/tested without touching auth or chat
-	- Structure: Could expose /start, /move, /end, WebSocket room handling
+Manages pong game sessions, scores, WebSockets, and real-time updates.
+- **Why**: Game logic is computationally and conceptually distinct.
+- **Pros**:
+	+ Easier to scale independently (real-time = resource-intensive)
+	+ Can be developed/tested without touching auth or chat
+- Structure: Could expose /start, /move, /end, WebSocket room handling
 
 ## 3. Chat Service
 
-	Handles real-time messaging, message persistence, private/public channels.
+Handles real-time messaging, message persistence, private/public channels.
 
-    - Why: Real-time chat has a different lifecycle and state model than games or auth.
-	- Pros:
-		+ Easier to isolate via WebSockets
-		+ Can use in-memory data + persistence layer (Redis + SQLite/Postgres)
+- **Why**: Real-time chat has a different lifecycle and state model than games or auth.
+- **Pros**:
+	+ Easier to isolate via WebSockets
+	+ Can use in-memory data + persistence layer (Redis + SQLite/Postgres)
 
 ## 4. User Profile Service
 
-	Manages avatars, usernames, rankings, stats.
+Manages avatars, usernames, rankings, stats.
 
-    - Why: CRUD-heavy, fits classic REST model.
-	- Pros:
-		+ Easily cacheable
-		+ Doesn’t require real-time interaction
-		+ Could be backed by a small DB of its own
+- **Why**: CRUD-heavy[^1], fits classic REST model.
+- **Pros**:
+	+ Easily cacheable
+	+ Doesn’t require real-time interaction
+	+ Could be backed by a small DB of its own
 
 
+[^1]: CRUD stands for:
+  1. Create – Add new data
+  2. Read – Retrieve data
+  3. Update – Modify existing data
+  4. Delete – Remove data
+  It's the basic set of operations for managing data in a database or through an API.
+  **CRUD-heavy** means the service is mainly focused on creating, reading, updating, and deleting data — lots of forms, database entries, and user input/output. \
+  So in the User Profile Service, most of the logic is:
+  - Creating or editing a user profile
+  - Fetching stats or rankings
+  - Updating avatars or language settings
+  - Deleting accounts
+  It doesn’t involve complex real-time behavior or business logic — just structured data operations, which are ideal for REST APIs.
