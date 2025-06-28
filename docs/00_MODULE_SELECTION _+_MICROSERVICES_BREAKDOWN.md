@@ -1,3 +1,34 @@
+# Types of modules
+
+Two kinds of “modules” in the subject:
+
+## 1. Service-Oriented Modules
+
+These modules represent functional components that naturally map to microservices, because they provide a focused, independent behavior:
+
+- Live Chat: Real-time system, scoped logic
+- 2FA + JWT Auth: Self-contained auth logic
+- Remote Pong Game: WebSockets service with game engine
+- User Profile: CRUD-style service [^1}]
+- OAuth Login: Belongs in same auth container
+
+## 2. Architectural/Strategic Modules
+
+These are design choices or framework-level decisions that affect how services are built, but don’t represent a service themselves:
+
+- Use Fastify (backend fw): Framework choice inside services
+- Use SQLite: DB engine used by each service
+- Design backend as microservices: Architecture strategy itself
+- Responsive Design: UI/UX implementation in frontend
+- Browser Compatibility: Styling and scripting on frontend
+- Multilanguage support: Rendering strategy or i18n config
+
+Some modules are deliverables (microservices = containers = code). \
+Others are architectural conventions or technology picks (they live inside those microservices or frontend components, not as standalone services). \
+That clarity will help to scope the containers cleanly and avoid overengineering!
+
+---
+
 # High-Level Microservices Architecture
 
 ```mermaid
@@ -30,7 +61,7 @@ Tech:
 
 Responsibilities:
 
-- Profile CRUD (username, avatar, languages)
+- Profile CRUD (username, avatar, languages) [^1]
 - User stats & ranking
 - Tournament logic (user assignment across games)
 
@@ -108,3 +139,10 @@ Tech:
 - OAuth login flow (Google pop-up)
 
 - Display user stats, chat messages, and Pong game
+
+[^1]: CRUD stands for:
+  - Create – Add new data
+  - Read – Retrieve data
+  - Update – Modify existing data
+  - Delete – Remove data
+  It's the basic set of operations for managing data in a database or through an API.
