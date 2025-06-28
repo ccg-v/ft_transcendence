@@ -140,9 +140,9 @@ Tech:
 
 - Display user stats, chat messages, and Pong game
 
-[^1]: CRUD stands for:
+[^1]: CRUD stands for
   Create – Add new data
-  - Read – Retrieve data
-  - Update – Modify existing data
-  - Delete – Remove data
+  Read – Retrieve data
+  Update – Modify existing data
+  Delete – Remove data
   It's the basic set of operations for managing data in a database or through an API.
