@@ -66,7 +66,6 @@ Manages avatars, usernames, rankings, stats.
 	+ Could be backed by a small DB of its own
 
 
-[^1]: **CRUD** stands for **C**reate, **R**ead, **U**pdate and **D**elete.
-  It's the basic set of operations for managing data in a database or through an API: add new data, retrieve data, modify existing data and remove data. \
+[^1]: **CRUD** stands for **C**reate, **R**ead, **U**pdate and **D**elete. It's the basic set of operations for managing data in a database or through an API: add new data, retrieve data, modify existing data and remove data. \
   **CRUD-heavy** means the service is mainly focused on creating, reading, updating, and deleting data — lots of forms, database entries, and user input/output. \
   In the User Profile Service, most of the logic is creating or editing a user profile (fetching stats or rankings, udating avatars or language settings, deleting accounts, ...). It doesn’t involve complex real-time behavior or business logic, just structured data operations, which are ideal for REST APIs.

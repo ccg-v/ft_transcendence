@@ -57,4 +57,14 @@ Move player paddle	   | ❌ not real-time	    | ✅ 60fps updates
 
 **But all of them are still built with Node.js — they just expose different types of endpoints.**
 
+# Protocols and endpoints
+
+In the context of APIs, **protocols** define the rules for communication between systems, while **endpoints** are specific locations (URLs) on the API where these interactions occur. A protocol like REST, SOAP, or GraphQL dictates how data is structured and transmitted, and an endpoint is where a client can access a particular resource or functionality offered by the API. 
+
+RESTful APIs use HTTP methods (GET, POST, PUT, DELETE, PATCH) in conjunction with endpoints to define the type of action being performed on a resource. 
+
+In essence, **protocols** define how communication happens, while **endpoints** define where that communication takes place within an API. A good understanding of both is crucial for effectively designing and consuming APIs. 
+
+---
+
 [^1]: **CRUD** stands for **C**reate, **R**ead, **U**pdate and **D**elete. It's the basic set of operations for managing data in a database or through an API: add new data, retrieve data, modify existing data and remove data.
