@@ -61,7 +61,7 @@ Tech:
 
 Responsibilities:
 
-- Profile CRUD (username, avatar, languages) [^1]
+- Profile CRUD (username, avatar, languages)[^1]
 - User stats & ranking
 - Tournament logic (user assignment across games)
 
@@ -138,14 +138,7 @@ Tech:
 
 - OAuth login flow (Google pop-up)
 
-- Display user stats, chat messages, and Pong game[^2].
+- Display user stats, chat messages, and Pong game.
 
-[^1]: CRUD stands for
-  Create – Add new data
-  Read – Retrieve data
-  Update – Modify existing data
-  Delete – Remove data
-  It's the basic set of operations for managing data in a database or through an API.
-
-[^2]: To add line breaks within a footnote, prefix new lines with 2 spaces.
-  This is a second line.
+[^1]: CRUD stands for **C**reate - **R**ead - **U**pdate - **D**elete
+  It's the basic set of operations for managing data in a database or through an API: Add new data, retrieve data, modify existing data and remove data
