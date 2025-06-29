@@ -140,5 +140,5 @@ Tech:
 
 - Display user stats, chat messages, and Pong game.
 
-[^1]: CRUD stands for **C**reate - **R**ead - **U**pdate - **D**elete.
-  It's the basic set of operations for managing data in a database or through an API: Add new data, retrieve data, modify existing data and remove data.
+[^1]: **CRUD** stands for **C**reate, **R**ead, **U**pdate and **D**elete.
+  It's the basic set of operations for managing data in a database or through an API: add new data, retrieve data, modify existing data and remove data.

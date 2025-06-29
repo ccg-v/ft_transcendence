@@ -57,9 +57,5 @@ Move player paddle	   | ❌ not real-time	    | ✅ 60fps updates
 
 **But all of them are still built with Node.js — they just expose different types of endpoints.**
 
-[^1]: CRUD stands for:
-  - Create – Add new data
-  - Read – Retrieve data
-  - Update – Modify existing data
-  - Delete – Remove data
-  It's the basic set of operations for managing data in a database or through an API.
+[^1]: **CRUD** stands for **C**reate, **R**ead, **U**pdate and **D**elete.
+	It's the basic set of operations for managing data in a database or through an API: add new data, retrieve data, modify existing data and remove data.
