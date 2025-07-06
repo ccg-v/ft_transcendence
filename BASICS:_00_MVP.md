@@ -52,7 +52,7 @@ This is what the subject mandates before modules, thus it must be present in our
 	+ Organizes matches (matchmaking).
 	+ **Displays** who plays against whom and in what order.
 
-	This is the heart of the base project: make Pong playable for multiple players _on the same machine_ via a web interface.
+This is the heart of the base project: make Pong playable for multiple players _on the same machine_ via a web interface.
 
 ### 2. Frontend Structure (SPA + TypeScript)
 
