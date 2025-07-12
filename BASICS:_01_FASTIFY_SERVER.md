@@ -1,7 +1,7 @@
 # Building a basic web server with Fastify
 
 Let's start from zero and build up a very simple Node.js web server using Fastify.
-First, What Are These Tools?
+First, what are these tools?
 
 - **Node.js** is a runtime that lets you run JavaScript code outside the browser (on your computer or server). Think of it like Python or C, but for JavaScript.
 
@@ -82,7 +82,9 @@ This command downloads the Fastify package and saves it into your project under 
 
 3. Install Fastify
 
-	`npm install fastify`
+	`npm install fastify@3`
+
+	We force to install the latest stable v3 to ensure compatibility with the old version of Node.js installed in campus
 
 4. Create a JavaScript file (your server)
 
