@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"b3ca4d63a90dacbc","x":-1120,"y":320,"width":320,"height":474,"color":"1","type":"text","text":"# User\n---\n#### ==User ID==\n#### Username\n#### Nickname\n#### e-mail\n#### 2FA secrets (?)\n#### Avatar\n#### Language\n"},
+		{"id":"813bce85a4a7db66","x":-1120,"y":-280,"width":320,"height":560,"color":"4","type":"text","text":"# Tournaments\n---\n\n#### ==Tournament ID==\n#### Tournament name\n#### Tournament date/time\n#### Number of players\n#### Stages\n#### Winner"},
+		{"id":"97cf8fe19eb22ec9","x":-720,"y":-280,"width":400,"height":240,"type":"text","text":"# Tournament register\n---\n#### Tournament_ID\n#### Player"},
+		{"id":"41567afb62f78815","type":"text","text":"#                        **Pong Matches**\n---\n#### ==**Match ID**==\n#### Tournament\n#### Match date/time\n#### Stage\n#### Player1\n#### Player2\n#### Score1\n#### Score2\n#### Winner\n\n\n\n","x":-240,"y":-280,"width":320,"height":560,"color":"2"},
+		{"id":"b24277d83d65b92c","x":-240,"y":320,"width":320,"height":474,"color":"2","type":"text","text":"# Breakout Games\n---\n#### ==Game ID==\n#### Game date/time\n#### Player\n#### Score\n#### Blocks destroyed\n#### Game duration"},
+		{"id":"f01d1a13e84a8dc6","x":-680,"y":514,"width":320,"height":280,"color":"5","type":"text","text":"Friendships\n---\n---\n#### User ID\n#### Friend ID\n#### Status"}
+	],
+	"edges":[]
+}
