@@ -196,6 +196,7 @@ Instead, ERD is universal and accepted in real-world software engineering, so di
     - **One-to-Many (1:N)**    
 	    + Each row in A relates to many rows in B.
 	    + But each row in B relates to exactly one row in A.
+    
 	    + Example:    
 		    - One tournament → many matches.
 		    - Each match belongs to exactly one tournament.
@@ -204,6 +205,7 @@ Instead, ERD is universal and accepted in real-world software engineering, so di
   	    + Rows in A can relate to many rows in B.
 	    + Rows in B can relate to many rows in A.
 	    + Requires a join table in relational databases.
+		    
 	    + Example:    
 		    - Many users can register for many tournaments.
 		    - That’s why you need tournament_register.
