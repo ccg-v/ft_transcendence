@@ -211,4 +211,48 @@ Instead, ERD is universal and accepted in real-world software engineering, so di
 		    - Many users can register for many tournaments.
 		    - That’s why you need tournament_register.
 
+[^2]:<p><sup>1</sup> In the context of ERDs, cardinality means <strong>the number of rows in one table that can or must be linked to rows in another table</strong>. It’s a way to describe the quantity relationship between two entities.</p>
+
+<h3>Main Types of Cardinality:</h3>
+<ul>
+  <li><strong>One-to-One (1:1)</strong>
+    <ul>
+      <li>Each row in A relates to at most one row in B.</li>
+      <li>And each row in B relates to at most one row in A.</li>
+      <li><em>Example:</em>
+        <ul>
+          <li>Each user has one profile.</li>
+          <li>Each profile belongs to one user.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>One-to-Many (1:N)</strong>
+    <ul>
+      <li>Each row in A relates to many rows in B.</li>
+      <li>But each row in B relates to exactly one row in A.</li>
+      <li><em>Example:</em>
+        <ul>
+          <li>One tournament → many matches.</li>
+          <li>Each match belongs to exactly one tournament.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Many-to-Many (N:M)</strong>
+    <ul>
+      <li>Rows in A can relate to many rows in B.</li>
+      <li>Rows in B can relate to many rows in A.</li>
+      <li>Requires a join table in relational databases.</li>
+      <li><em>Example:</em>
+        <ul>
+          <li>Many users can register for many tournaments.</li>
+          <li>That’s why you need <code>tournament_register</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
