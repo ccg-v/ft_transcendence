@@ -184,33 +184,34 @@ Instead, ERD is universal and accepted in real-world software engineering, so di
 - Constraints written explicitly (e.g., `PK(user_id, friend_id)`).
 
 [^1]: In the context of ERDs, cardinality means **the number of rows in one table that can or must be linked to rows in another table**. It’s a way to describe the quantity relationship between two entities.
-    Main Types of Cardinality
-  - **One-to-One (1:1)**
-
-	  + Each row in A relates to at most one row in B.
-	  + And each row in B relates to at most one row in A.
-	  + Example:
-
-		  - Each user has one profile.
-		  - Each profile belongs to one user.
-
-  - **One-to-Many (1:N)**
-
-	  + Each row in A relates to many rows in B.
-	  + But each row in B relates to exactly one row in A.
-	  + Example:
-
-		  - One tournament → many matches.
-		  - Each match belongs to exactly one tournament.
-
-  - **Many-to-Many (N:M)**
-
-  	  + Rows in A can relate to many rows in B.
-	  + Rows in B can relate to many rows in A.
-	  + Requires a join table in relational databases.
-	  + Example:
-
-		  - Many users can register for many tournaments.
-		  - That’s why you need tournament_register.
+    
+    Main Types of Cardinality:
+    - **One-to-One (1:1)**
+    
+	    + Each row in A relates to at most one row in B.
+	    + And each row in B relates to at most one row in A.
+	    + Example:
+    
+		    - Each user has one profile.
+		    - Each profile belongs to one user.
+    
+    - **One-to-Many (1:N)**
+    
+	    + Each row in A relates to many rows in B.
+	    + But each row in B relates to exactly one row in A.
+	    + Example:
+    
+		    - One tournament → many matches.
+		    - Each match belongs to exactly one tournament.
+    
+    - **Many-to-Many (N:M)**
+    
+  	    + Rows in A can relate to many rows in B.
+	    + Rows in B can relate to many rows in A.
+	    + Requires a join table in relational databases.
+	    + Example:
+    
+		    - Many users can register for many tournaments.
+		    - That’s why you need tournament_register.
 
 
