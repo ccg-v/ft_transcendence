@@ -189,7 +189,8 @@ Instead, ERD is universal and accepted in real-world software engineering, so di
     - **One-to-One (1:1)**
 	    + Each row in A relates to at most one row in B.
 	    + And each row in B relates to at most one row in A.
-	    + Example:    
+    
+	    + Example:
 		    - Each user has one profile.
 		    - Each profile belongs to one user.
     
