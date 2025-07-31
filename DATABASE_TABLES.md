@@ -184,7 +184,7 @@ Instead, ERD is universal and accepted in real-world software engineering, so di
 - Constraints written explicitly (e.g., `PK(user_id, friend_id)`).
 
 [^1]: In the context of ERDs, cardinality means **the number of rows in one table that can or must be linked to rows in another table**. It’s a way to describe the quantity relationship between two entities.
-  Main Types of Cardinality
+    Main Types of Cardinality
   - **One-to-One (1:1)**
 
 	  + Each row in A relates to at most one row in B.
