@@ -189,24 +189,21 @@ In the context of ERDs, cardinality means **the number of rows in one table that
 >- **One-to-One (1:1)**
 >	+ Each row in A relates to at most one row in B.
 >	+ And each row in B relates to at most one row in A.
->
 >	+ Example:
 >		- Each user has one profile.
 >		- Each profile belongs to one user.
 >
->	- **One-to-Many (1:N)**    
+>- **One-to-Many (1:N)**    
 >	+ Each row in A relates to many rows in B.
 >	+ But each row in B relates to exactly one row in A.
->
 >	+ Example:    
 >		- One tournament → many matches.
 >		- Each match belongs to exactly one tournament.
 >
->	- **Many-to-Many (N:M)**    
+>- **Many-to-Many (N:M)**    
 >	+ Rows in A can relate to many rows in B.
 >	+ Rows in B can relate to many rows in A.
 >	+ Requires a join table in relational databases.
->		
 >	+ Example:    
 >		- Many users can register for many tournaments.
 >		- That’s why you need tournament_register.
