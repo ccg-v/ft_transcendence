@@ -254,3 +254,94 @@ Now the query displays the friendship:
 ```sql
 Carlos | Clara | pending | 2025-08-02 00:41:24
 ```
+
+
+## 4. JOIN tables: preventing duplication of inverse tuples
+
+Right now, the `friendships` table allows:
+
+```sql
+INSERT INTO friendships (user_id, friend_id) VALUES (1, 2);
+INSERT INTO friendships (user_id, friend_id) VALUES (2, 1);
+```
+
+Those two rows represent the _same_ friendship, just reversed. But we want **only one row per friendship**.
+Conceptually, we want to make sure that if `(1,2)` exists, `(2,1)` cannot be inserted. Two approaches:
+
+### 4.1 `CHECK` constraint
+
+The idea is to store values in a canonical order, so that we always insert the smaller `user_id` first.
+Adding this `CHECK` constraint at the end of our `CREATE TABLE`:
+
+```sql
+CHECK(user_id < friend_id)
+```
+will reject any attempt to store `(2, 1)` will fail
+
+```sql
+Error: CHECK constraint failed: friendships
+```
+
+**Limitation:** 
+If we try (2,1) while (1,2) doesn’t yet exist, **the DB will reject it instead of fixing it**.
+So the friendship isn’t stored.
+Therefore, this approach ensures no bad rows ever sneak in, but it does not fix our input.
+
+### 4.2 Add logic in backend 
+
+Using `MIN/MAX` in the backend reorders the IDs before insrting the values, so **the friendship is alwas stored, regardless of the order given**:
+
+```sql
+INSERT INTO friendships (user_id, friend_id, status)
+VALUES (
+    MIN(:user_id, :friend_id),
+    MAX(:user_id, :friend_id),
+    'accepted'
+);
+```
+
+**Short description of how data is processed from frontend to backend:**
+
+>
+> - **Frontend:**	
+> 	+ The user clicks the button to accept the friendship
+>	+ The frontend (the website in the browser) sends a request, usually via HTTP, like:
+>
+>		```h
+>		POST /api/friendships/accept
+>		{
+>		"user_id": 5,
+>		"friend_id": 12
+>		}
+>		```
+>
+> - **Backend:**
+> 	
+>	+ The backend (Fastify server in our case) receives the request from the frontend
+>	+ Runs any validation/security checks if necessary
+>	+ Builds and executes the SQL statement with the INSERT command:
+>
+>		```sql
+>		INSERT INTO friendships (user_id, friend_id, status)
+>		VALUES (
+>			MIN(:user_id, :friend_id),
+>			MAX(:user_id, :friend_id),
+>		'	accepted'
+>		);
+>		```
+>	+ Returns a response back to the frontend, e.g.:
+>
+>		```json
+>		{ "message": "Friendship accepted successfully!" }
+>		```
+>
+> -	**Frontend:**
+>	+ Receives the response
+>	+ Updates the UI (e.g. hiding or disabling the button and showing _"You are now friends"_).
+>
+
+### 4.3 The Combo (best practice)
+
+- Backend MIN/MAX: guarantees insertion always succeeds with the right order.
+- CHECK constraint + PK: guarantees that if the backend slips up, the DB still refuses values given in the wrong order.
+- Table's PK (`PRIMARY KEY (user_id, friend_id)`) prevents tuple duplications.
