@@ -29,7 +29,7 @@ If `Node.js` is not installed, we can either go to the `Node.js` archive (https:
 
 or use the **Node Version Manager (nvm)**. that lets you install multiple versions of Node.js, but it doesn't "lock" your terminal to one of them permanently:
 
-- Install **nvm **(if not installed):
+- Install **nvm** (if not installed):
 
 	`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
 
