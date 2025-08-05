@@ -289,7 +289,7 @@ Therefore, this approach ensures no bad rows ever sneak in, but it does not fix 
 
 ### 4.2 Add logic in backend 
 
-Using `MIN/MAX` in the backend reorders the IDs before insrting the values, so **the friendship is alwas stored, regardless of the order given**:
+Using `MIN/MAX` in the backend reorders the IDs before inserting the values, so **the friendship is always stored, regardless of the order given**:
 
 ```sql
 INSERT INTO friendships (user_id, friend_id, status)

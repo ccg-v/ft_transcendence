@@ -1,4 +1,6 @@
-# Picture of the very first version of a web app
+# Picture of the very first version of a web app (no frontend)
+
+We'll start testing without a frontend. Instead of using HTML to start testing the database connection, we will use `cURL` in terminal to validate our backend <-> database pipeline before the frontend exists.
 
 ## 1. The PIECES needed
 
@@ -8,13 +10,19 @@
 - In your case, the SQLite file `ft_transcendence.db`.
 - Example: it has a table called `friendships` where you can store pairs of users.
 
-### 1.2 The server (Fastify)
+### 1.2 The backend
 
+- A minimal Fastify app, since that's the required framework.
+- It will run SQL commands on our SQLite DB.
+
+### 1.3 The server (Fastify)
+
+- Fastify doubles as web server for now (we don't need Nginx yet just to test the basics).
 - This is like a waiter in a restaurant.
 - It listens for requests (_“please add a friendship”_) and talks to the kitchen (the database).
 - If successful, it comes back and says, _“Done, friendship added!”_
 
-### 1.3 The client (for now: curl, later: your browser with an HTML form)
+### 1.4 The client (for now: curl, later: your browser with an HTML form)
 
 - This is the customer who tells the waiter what they want.
 - With `curl`, you typed a command that said: _“Please add a friendship between user 3 and user 1.”_
@@ -76,3 +84,96 @@ Let's put it all together:
 	```json
 		{"message":"Friendship added!"}
 	```
+
+# Jumping to a _full stack round_: test connection 
+
+Lets go forward and complete a "full stack round trip":
+
+```
+	HTML → Fastify backend → SQLite database → browser response
+```
+
+1. Allow Fastify to accept requests from your browser
+
+- Add CORS plugin to the project (CORS = Cross-Origin Resource Sharing). Since we have installed an old version of Node.js, 12.22.9, we cannot install `@fastify/cors` because it requires Node.js 14+. The best solution is to use the older package called `fastify-cors`, which supports Node 12:
+
+```bash
+	npm install fastify-cors
+```
+
+- In `server.js`, register CORS after creating the Fastify instance but before starting the server:
+
+```js
+	await fastify.register(require("fastify-cors"), { origin: "*" });
+```
+
+2. At this point,, still our Fastify server does not know how to serve a webpage at the root URL (`GET /`). To serve our HTML page with Fastify, we have two options:
+
+2.1 Serve the HTML with a custom route
+
+- Define a GET route in your server.js that sends the HTML manually:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+fastify.get("/", async (request, reply) => {
+  const html = fs.readFileSync(path.join(__dirname, "index.html"), "utf8");
+  reply.type("text/html").send(html);
+});
+```
+- We are manually reading `index.html` from disk each time someone visits `/`. 
+- This works fine for a single page, but as soon as we need CSS, images, or frontend JavaScript, we will have to add more custom routes (`/style.css`, `/script.js`, `/logo.png`, etc.).
+- Each file served means we repeat `fs.readFileSync` or similar.
+- This option is good for a quick test or one single HTML file.
+
+2.2 Serve a static index.html file with Fastify
+
+- Create a folder called, for example, `public` inside your project folder.
+- Put your `index.html` file inside that `public` folder.
+- Install the Fastify static plugin to serve static files:
+```bash
+	npm install fastify-static
+```
+> [!CAUTION]
+> Again, we must install a version that is compatible with Node 12 \
+> ~~`npm uninstall @fastify/static`~~ \
+> will not work. The server will throw a syntax error \
+> `SyntaxError: Unexpected token '?'` \
+> because the plugin uses the _nullish coalescing operator (`??`)_ which Node.js only supports starting from v.14
+
+- Modify your `server.js` to register the static plugin **before** your routes:
+
+```js
+	const path = require("path");
+	const fastifyStatic = require("@fastify/static");
+
+	// Serve files from 'public' folder at root URL
+	fastify.register(fastifyStatic, {
+	root: path.join(__dirname, "public"),
+	prefix: "/", // optional: default '/'
+	});
+```
+- Now Fastify automatically serves all files inside a folder (in our case, `public`).
+- We can drop in `index.html`, `style.css`, `app.js`, and even folders like `/images` and they’re all available right away:
+	- Visiting `/` will give `public/index.html` automatically.
+	- Visiting `/style.css` will give `public/style.css`.
+	- Visiting `/js/app.js` will give `public/js/app.js`.
+- The snippet is enough to serve all the files inside `public/` automatically, we don’t need to write a route per file. Fastify detects file types, sets the right headers, and handles them.
+
+---
+
+# Lock in the mini-MVP: basic user registration
+
+Before you throw Docker or Nginx into the mix, let’s turn that into a tiny prototype that actually feels like a game site.
+
+Add just one real feature for users:
+
+- a registration form with nick, email, and password
+- save the user in the users table (no security yet — cleartext password is fine for this step)
+
+That way, you prove:
+
+-Frontend form → Fastify route → SQLite insert → Feedback to user
+
+You’ll see the same cycle working for a more meaningful table than friendships.
