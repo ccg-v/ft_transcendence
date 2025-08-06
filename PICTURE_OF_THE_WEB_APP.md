@@ -95,16 +95,16 @@ Lets go forward and complete a "full stack round trip":
 
 1. Allow Fastify to accept requests from your browser
 
-- Add CORS plugin to the project (CORS = Cross-Origin Resource Sharing). Since we have installed an old version of Node.js, 12.22.9, we cannot install `@fastify/cors` because it requires Node.js 14+. The best solution is to use the older package called `fastify-cors`, which supports Node 12:
+- Add CORS plugin to the project (CORS = Cross-Origin Resource Sharing). Since we have installed Fastify v4, we will install CORS version 8:
 
 ```bash
-	npm install fastify-cors
+	npm install @fastify/cors@8
 ```
 
 - In `server.js`, register CORS after creating the Fastify instance but before starting the server:
 
 ```js
-	await fastify.register(require("fastify-cors"), { origin: "*" });
+	fastify.register(require("@fastify/cors"), { origin: "*" });
 ```
 
 2. At this point,, still our Fastify server does not know how to serve a webpage at the root URL (`GET /`). To serve our HTML page with Fastify, we have two options:
@@ -131,27 +131,18 @@ fastify.get("/", async (request, reply) => {
 
 - Create a folder called, for example, `public` inside your project folder.
 - Put your `index.html` file inside that `public` folder.
-- Install the Fastify static plugin to serve static files:
+- Install the Fastify static plugin to serve static files (must be `6.x`, which is the last version compatible with Fastify v4 - `7.x` requires v5):
 ```bash
-	npm install fastify-static
+	npm install @fastify/static@6
 ```
-> [!CAUTION]
-> Again, we must install a version that is compatible with Node 12 \
-> ~~`npm uninstall @fastify/static`~~ \
-> will not work. The server will throw a syntax error \
-> `SyntaxError: Unexpected token '?'` \
-> because the plugin uses the _nullish coalescing operator (`??`)_ which Node.js only supports starting from v.14
-
 - Modify your `server.js` to register the static plugin **before** your routes:
 
 ```js
 	const path = require("path");
-	const fastifyStatic = require("@fastify/static");
 
 	// Serve files from 'public' folder at root URL
-	fastify.register(fastifyStatic, {
+	fastify.register(require('@fastify/static'), {
 	root: path.join(__dirname, "public"),
-	prefix: "/", // optional: default '/'
 	});
 ```
 - Now Fastify automatically serves all files inside a folder (in our case, `public`).

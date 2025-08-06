@@ -37,17 +37,17 @@ or use the **Node Version Manager (nvm)**. that lets you install multiple versio
 
 	`command -v nvm`
 
-- Install Node.js 12.22.9 (the campus version):
+- Install Node.js version 18:
 
-	`nvm install 12.22.9`
+	`nvm install 18`
 
 - Use it:
 
-	`nvm use 12.22.9`
+	`nvm use 18`
 
 - Set it as default (optional):
 
-    `nvm alias default 12.22.9`
+    `nvm alias default 18`
 
 ### Installing Node Package Manager (npm)
 
@@ -82,9 +82,9 @@ This command downloads the Fastify package and saves it into your project under 
 
 3. Install Fastify
 
-	`npm install fastify@3`
+	`npm install fastify@4`
 
-	We force to install the latest stable v3 to ensure compatibility with the old version of Node.js installed in campus
+	We force to install the latest stable v4 to ensure compatibility with some fastify plugins that we may need later and yet don't support v5 (like `@fastify/jwt`, `@fastify/websocket`).
 
 4. Create a JavaScript file (your server)
 

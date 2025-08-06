@@ -6,8 +6,6 @@
 - We will focus only on `CREATE TABLE`, `INSERT INTO`, `SELECT ... WHERE`, `UPDATE`, `DELETE` and basic `JOIN`
 - Practising will be simmple with SQLite CLI
 
-- to **list the name of the tables** in a database: `.tables`
-
 ### 1.1 Installing SQLite
 
 ```bash
