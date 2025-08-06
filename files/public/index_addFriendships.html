@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Friendship</title>
+</head>
+<body>
+  <h1>Add Friendship</h1>
+  <form id="friendForm">
+    <label>User ID: <input type="number" id="user_id" required></label><br>
+    <label>Friend ID: <input type="number" id="friend_id" required></label><br>
+    <button type="submit">Add Friendship</button>
+  </form>
+  
+  <p id="result"></p>
+
+  <script>
+    const form = document.getElementById("friendForm");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      
+      const user_id = document.getElementById("user_id").value;
+      const friend_id = document.getElementById("friend_id").value;
+
+      try {
+        const response = await fetch("http://localhost:3000/add-friendship", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ user_id, friend_id })
+        });
+
+        const data = await response.json();
+        document.getElementById("result").textContent = data.message || data.error;
+      } catch (err) {
+        document.getElementById("result").textContent = "Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
+
